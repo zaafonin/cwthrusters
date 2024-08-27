@@ -1,0 +1,49 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "Apache 2.0"
+
+[[mods]]
+modId = "cwthrusters"
+version = "${version}"
+displayName = "Clockwork Thrusters"
+authors = "zaafonin"
+description = '''
+Creative propulsion for Valkyrien Skies 2.
+'''
+#logoFile = ""
+
+[[dependencies.cwthrusters]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cwthrusters]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cwthrusters]]
+modId = "create"
+mandatory = true
+versionRange = "[0.5.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+#[[dependencies.cwthrusters]]
+#modId = "valkyrienskies"
+#mandatory = true
+#versionRange = "[2.1.3-beta.1+a52f38bd68,)"
+#ordering = "AFTER"
+#side = "BOTH"
+
+[[dependencies.cwthrusters]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2.14,)"
+ordering = "AFTER"
+side = "BOTH"

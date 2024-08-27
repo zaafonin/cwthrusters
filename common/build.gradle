@@ -1,0 +1,39 @@
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+repositories {
+    maven { url = "https://mvn.devos.one/releases" } // Porting Lib Releases
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge config api port
+    maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/cwthrusters-common.accesswidener")
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+
+    modApi("org.valkyrienskies:valkyrienskies-120-common:$vs2_version") { transitive = false }
+
+    // VS2
+    modImplementation("org.valkyrienskies.core:api:$vs_core_version")
+    modImplementation("org.valkyrienskies.core:api-game:$vs_core_version")
+    modImplementation("org.valkyrienskies.core:util:$vs_core_version")
+    modImplementation("org.valkyrienskies.core:impl:$vs_core_version")
+
+    // Use Create Fabric as common
+    modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
+
+    // Use Clockwork Fabric as common
+    modImplementation(files("../libs/${clockwork_fabric_version}.jar"))
+}
