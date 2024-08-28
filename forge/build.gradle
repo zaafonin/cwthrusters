@@ -4,14 +4,14 @@ plugins {
     id "com.modrinth.minotaur"
 }
 
-/*loom {
+loom {
     forge {
         mixinConfig "cwthrusters-common.mixins.json"
         mixinConfig "cwthrusters.mixins.json"
         convertAccessWideners.set(true)
         extraAccessWideners.add loom.getAccessWidenerPath().asFile.toString()
     }
-}*/
+}
 
 architectury {
     platformSetupLoomIde()
@@ -79,6 +79,11 @@ dependencies {
 
     // CWThrusters does not use Kotlin, but VS2 and Clockwork do.
     implementation "thedarkcolour:kotlinforforge:$forge_kotlin_version"
+
+    // Development QOL
+    modCompileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    modCompileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
 processResources {
